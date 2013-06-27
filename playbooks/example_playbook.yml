@@ -1,0 +1,18 @@
+---
+# Example playbook that uses nodejs tasks for installing Node.js from source.
+
+- hosts: machines
+  sudo: True
+  user: username
+
+  vars:
+    repo_basedir: ..
+
+    node_version: "0.10.12"
+    node_prefix: "node-v${node_version}"
+    node_tarball: "${node_prefix}.tar.gz"
+    node_path: "/usr/local"
+
+  tasks:
+    # Install node.js
+    - include: $repo_basedir/nodejs/tasks/setup.yml
